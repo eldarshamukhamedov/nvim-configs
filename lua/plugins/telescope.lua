@@ -14,7 +14,12 @@ return {
 
 		local function ivy_theme(tele_command)
 			return function()
-				tele_command(require("telescope.themes").get_ivy())
+				tele_command(require("telescope.themes").get_ivy({
+					shorten_path = true,
+					path_display = {
+						"filename_first",
+					},
+				}))
 			end
 		end
 
