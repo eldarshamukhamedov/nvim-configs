@@ -44,3 +44,6 @@ vim.keymap.set({ "n", "x" }, "gp", '"+p', { desc = "Paste from clipboard" })
 
 -- Load LazyVim package manager
 require("config.lazy")
+
+-- Disable deprecation warnings (YOLO)
+vim.deprecate = function() end
