@@ -1,6 +1,5 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
-	name = "neo-tree",
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -11,16 +10,45 @@ return {
 	config = function()
 		require("neo-tree").setup({
 			enable_git_status = true,
-			popup_border_style = "single",
-			window = {
-				position = "left",
-				width = 30,
-			},
+
 			filesystem = {
 				follow_current_file = {
 					enabled = true,
 				},
 				group_empty_dirs = true,
+			},
+
+			default_component_configs = {
+				git_status = {
+					symbols = {
+						added = "+",
+						modified = "",
+						deleted = "-",
+						renamed = "",
+						-- added = "",
+						-- modified = "",
+						-- deleted = "",
+						-- renamed = "",
+
+						untracked = "",
+						ignored = "",
+						unstaged = "",
+						staged = "",
+						conflict = "",
+					},
+				},
+
+				modified = {
+					-- Don't show symbol for unsaved buffers, BarBar already does this
+					symbol = " ",
+				},
+			},
+
+			popup_border_style = "single",
+
+			window = {
+				position = "left",
+				width = 30,
 			},
 		})
 		vim.keymap.set("n", "<leader>e", "<cmd>Neotree<cr>", { desc = "Open Neotree" })

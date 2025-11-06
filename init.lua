@@ -1,5 +1,6 @@
 -- General options
 vim.opt.termguicolors = true
+vim.o.number = true
 vim.o.relativenumber = true
 vim.o.smartcase = true
 vim.o.ignorecase = true
@@ -8,6 +9,9 @@ vim.o.signcolumn = "yes"
 vim.o.wrap = false
 vim.o.scroll = 8
 vim.o.scrolloff = 8
+
+-- Popup (e.g. autocomplete) max height
+vim.o.pumheight = 30
 
 -- Enable wrap for markdown files
 local enable_wrap_options = {

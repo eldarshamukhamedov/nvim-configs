@@ -1,6 +1,5 @@
 return {
 	"neovim/nvim-lspconfig",
-	name = "lspconfig",
 	version = false,
 	config = function()
 		-- TypeScript

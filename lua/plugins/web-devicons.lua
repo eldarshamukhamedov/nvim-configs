@@ -1,6 +1,5 @@
 return {
 	"nvim-tree/nvim-web-devicons",
-	name = "web-devicons",
 	config = function()
 		require("nvim-web-devicons").setup({
 			override_by_filename = {

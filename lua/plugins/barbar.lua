@@ -1,9 +1,12 @@
 return {
 	"romgrk/barbar.nvim",
-	name = "barbar",
 	version = false,
 	config = function()
 		require("barbar").setup({
+			icons = {
+				modified = { button = "" },
+			},
+
 			sidebar_filetypes = {
 				["neo-tree"] = { event = "BufWipeout" },
 			},
