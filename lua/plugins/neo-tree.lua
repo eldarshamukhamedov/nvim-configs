@@ -4,7 +4,24 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
-		"nvim-tree/nvim-web-devicons",
+		{
+			"nvim-tree/nvim-web-devicons",
+			config = function()
+				require("nvim-web-devicons").setup({
+					override_by_filename = {
+						["package.json"] = { icon = "" },
+						[".gitignore"] = { icon = "" },
+						[".gitattributes"] = { icon = "" },
+						[".git-blame-ignore-revs"] = { icon = "" },
+						[".gitmodules"] = { icon = "" },
+						[".npmrc"] = { icon = "" },
+					},
+					override_by_extension = {
+						["json"] = { icon = "" },
+					},
+				})
+			end,
+		},
 	},
 	lazy = false,
 	config = function()
@@ -25,10 +42,6 @@ return {
 						modified = "",
 						deleted = "-",
 						renamed = "",
-						-- added = "",
-						-- modified = "",
-						-- deleted = "",
-						-- renamed = "",
 
 						untracked = "",
 						ignored = "",
