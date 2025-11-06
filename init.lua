@@ -9,6 +9,7 @@ vim.o.signcolumn = "yes"
 vim.o.wrap = false
 vim.o.scroll = 8
 vim.o.scrolloff = 8
+vim.o.updatetime = 100
 
 -- Popup (e.g. autocomplete) max height
 vim.o.pumheight = 30
