@@ -3,6 +3,7 @@ return {
 	priority = 1000,
 	config = function()
 		require("catppuccin").setup({
+			auto_integrations = true,
 			flavor = "mocha",
 			color_overrides = {
 				mocha = {
