@@ -11,9 +11,14 @@ return {
 
 		cmp.setup({
 			mapping = cmp.mapping.preset.insert({
+				-- Previous/next suggestion
 				["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+				-- Manually trigger suggestion
 				["<C-Space>"] = cmp.mapping.complete(),
+				-- Close suggestion
+				["<C-e>"] = cmp.mapping.abort(),
+				-- Accept suggestion
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 				["<CR>"] = cmp.mapping.confirm({ select = true, { "i", "c" } }),
 			}),
