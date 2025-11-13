@@ -15,6 +15,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				css = prettier_format_options,
+				scss = prettier_format_options,
 				html = prettier_format_options,
 				javascript = prettier_format_options,
 				javascriptreact = prettier_format_options,

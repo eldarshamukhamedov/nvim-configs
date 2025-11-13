@@ -47,6 +47,12 @@ vim.g.editorconfig = false
 vim.keymap.set({ "n", "x" }, "gy", '"+y', { desc = "Copy to clipboard" })
 vim.keymap.set({ "n", "x" }, "gp", '"+p', { desc = "Paste from clipboard" })
 
+-- Remap q (record macro) to Q, and Q (replay last register) to <M-q>
+-- nvim-cmp is disable in record macro mode, and I press q by accident too much
+vim.keymap.set("n", "q", "<nop>", { noremap = true })
+vim.keymap.set("n", "Q", "q", { noremap = true, desc = "Record macro" })
+vim.keymap.set("n", "<M-q>", "Q", { noremap = true, desc = "Replay last register" })
+
 -- Load LazyVim package manager
 require("config.lazy")
 
