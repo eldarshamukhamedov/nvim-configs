@@ -18,7 +18,7 @@ return {
 
 		-- Tailwind V4
 		local hostname = vim.fn.hostname()
-		if hostname == "nixos-framework2022" then
+		if hostname == "fw13-23-amd-7840u" then
 			vim.lsp.config("tailwindcss", {
 				root_dir = function(bufnr, on_dir)
 					-- Copied and modified from https://github.com/neovim/nvim-lspconfig/blob/1c505a2a37c7732fb2a7e290c0f822abfb2ba1c5/lsp/tailwindcss.lua#L110
