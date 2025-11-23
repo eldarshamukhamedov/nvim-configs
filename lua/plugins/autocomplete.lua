@@ -20,7 +20,7 @@ return {
 				["<C-e>"] = cmp.mapping.abort(),
 				-- Accept suggestion
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-				["<CR>"] = cmp.mapping.confirm({ select = true, { "i", "c" } }),
+				["<CR>"] = cmp.mapping.confirm({ select = false, { "i", "c" } }),
 			}),
 
 			sources = cmp.config.sources({

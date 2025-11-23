@@ -93,6 +93,13 @@ return {
 			virtual_text = true,
 			underline = true,
 			update_in_insert = false,
+			float = {
+				close_events = {
+					"CursorMoved",
+					"BufHidden",
+					"LspDetach",
+				},
+			},
 		})
 
 		-- Keybindings

@@ -32,7 +32,18 @@ return {
 				follow_current_file = {
 					enabled = true,
 				},
-				group_empty_dirs = true,
+				-- group_empty_dirs = true,
+
+				filtered_items = {
+					always_show = {
+						".bruno",
+						".gitignore",
+						".npmrc",
+					},
+					always_show_by_pattern = {
+						".env*",
+					},
+				},
 			},
 
 			default_component_configs = {
