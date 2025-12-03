@@ -25,6 +25,7 @@ return {
 				jsonc = prettier_format_options,
 				markdown = prettier_format_options,
 				yaml = prettier_format_options,
+				mdx = prettier_format_options,
 			},
 		})
 	end,
