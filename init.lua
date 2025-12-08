@@ -10,6 +10,7 @@ vim.o.wrap = false
 vim.o.scroll = 8
 vim.o.scrolloff = 8
 vim.o.updatetime = 100
+vim.o.colorcolumn = "80"
 
 -- Popup (e.g. autocomplete) max height
 vim.o.pumheight = 30
@@ -52,13 +53,6 @@ vim.keymap.set({ "n", "x" }, "gp", '"+p', { desc = "Paste from clipboard" })
 vim.keymap.set("n", "q", "<nop>", { noremap = true })
 vim.keymap.set("n", "Q", "q", { noremap = true, desc = "Record macro" })
 vim.keymap.set("n", "<M-q>", "Q", { noremap = true, desc = "Replay last register" })
-
--- Filetypes
-vim.filetype.add({
-	extension = {
-		mdx = "markdown",
-	},
-})
 
 -- Load LazyVim package manager
 require("config.lazy")

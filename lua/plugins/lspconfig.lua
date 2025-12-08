@@ -13,6 +13,16 @@ return {
 		})
 		vim.lsp.enable("ts_ls")
 
+		-- MDX
+		vim.lsp.config("mdx_analyzer", {
+			init_options = {
+				typescript = {
+					enabled = true,
+				},
+			},
+		})
+		vim.lsp.enable("mdx_analyzer")
+
 		-- ESLint
 		vim.lsp.enable("eslint")
 
