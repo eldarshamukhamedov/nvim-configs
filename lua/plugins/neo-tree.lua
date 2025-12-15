@@ -29,6 +29,7 @@ return {
 			enable_git_status = true,
 
 			filesystem = {
+				use_libuv_file_watcher = true,
 				follow_current_file = {
 					enabled = true,
 				},
@@ -70,7 +71,6 @@ return {
 			},
 
 			popup_border_style = "single",
-
 			window = {
 				position = "left",
 				width = 30,

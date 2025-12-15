@@ -11,6 +11,7 @@ vim.o.scroll = 8
 vim.o.scrolloff = 8
 vim.o.updatetime = 100
 vim.o.colorcolumn = "80"
+vim.o.backupcopy = "yes"
 
 -- Popup (e.g. autocomplete) max height
 vim.o.pumheight = 30

@@ -1,5 +1,6 @@
 return {
 	"romgrk/barbar.nvim",
+	enabled = false,
 	version = false,
 	config = function()
 		require("barbar").setup({
@@ -8,9 +9,9 @@ return {
 				pinned = { filename = true },
 			},
 
-			sidebar_filetypes = {
-				["neo-tree"] = { event = "BufWipeout" },
-			},
+			-- sidebar_filetypes = {
+			-- 	["neo-tree"] = { event = "BufWipeout" },
+			-- },
 		})
 
 		-- Move between buffers
