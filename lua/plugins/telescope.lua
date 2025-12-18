@@ -6,6 +6,7 @@ return {
 	},
 	config = function()
 		local telescope = require("telescope")
+		local actions = require("telescope.actions")
 		local builtin = require("telescope.builtin")
 		local picker_options = { theme = "ivy" }
 
@@ -13,10 +14,19 @@ return {
 			defaults = {
 				initial_mode = "normal",
 				path_display = { "filename_first" },
+
+				mappings = {
+					n = {
+						["x"] = actions.delete_buffer,
+					},
+				},
 			},
 			pickers = {
 				find_files = picker_options,
-				buffers = picker_options,
+				buffers = {
+					theme = "ivy",
+					sort_mru = true,
+				},
 				help_tags = picker_options,
 				git_status = picker_options,
 				lsp_implementations = picker_options,
