@@ -1,31 +1,44 @@
 return {
 	"stevearc/conform.nvim",
 	config = function()
-		local prettier_format_options = {
+		local conform = require("conform")
+		local hostname = vim.fn.hostname()
+
+		local webdev_formatter = {
 			"prettier",
 			timeout_ms = 3000,
 			lsp_format = "never",
 		}
-		require("conform").setup({
+		local on_save_timeout = 2000
+		if hostname == "fw13-23-amd-7840u" then
+			webdev_formatter = {
+				"oxfmt",
+				timeout_ms = 500,
+				lsp_format = "never",
+			}
+			on_save_timeout = 500
+		end
+
+		conform.setup({
 			format_on_save = {
 				-- These options will be passed to conform.format()
-				timeout_ms = 2000,
+				timeout_ms = on_save_timeout,
 				lsp_format = "fallback",
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				css = prettier_format_options,
-				scss = prettier_format_options,
-				html = prettier_format_options,
-				javascript = prettier_format_options,
-				javascriptreact = prettier_format_options,
-				typescript = prettier_format_options,
-				typescriptreact = prettier_format_options,
-				json = prettier_format_options,
-				jsonc = prettier_format_options,
-				markdown = prettier_format_options,
-				yaml = prettier_format_options,
-				mdx = prettier_format_options,
+				css = webdev_formatter,
+				scss = webdev_formatter,
+				html = webdev_formatter,
+				javascript = webdev_formatter,
+				javascriptreact = webdev_formatter,
+				typescript = webdev_formatter,
+				typescriptreact = webdev_formatter,
+				json = webdev_formatter,
+				jsonc = webdev_formatter,
+				markdown = webdev_formatter,
+				yaml = webdev_formatter,
+				mdx = webdev_formatter,
 			},
 		})
 	end,

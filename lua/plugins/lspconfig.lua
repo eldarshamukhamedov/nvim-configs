@@ -2,16 +2,57 @@ return {
 	"neovim/nvim-lspconfig",
 	version = false,
 	config = function()
-		-- TypeScript
-		vim.lsp.config("ts_ls", {
-			init_options = {
-				preferences = {
-					importModuleSpecifier = "non-relative",
-					importModuleSpecifierPreference = "non-relative",
+		local hostname = vim.fn.hostname()
+
+		if hostname == "fw13-23-amd-7840u" then
+			-- TypeScript 7
+			vim.lsp.config("tsgo", {
+				init_options = {
+					preferences = {
+						-- These settings usually carry over as they are passed to the
+						-- underlying TypeScript server host
+						importModuleSpecifier = "non-relative",
+						importModuleSpecifierPreference = "non-relative",
+					},
 				},
-			},
-		})
-		vim.lsp.enable("ts_ls")
+			})
+			vim.lsp.enable("tsgo")
+
+			-- Oxlint
+			vim.lsp.config("oxlint", {
+				settings = {
+					run = "onType",
+					fixKind = "safe",
+				},
+				on_attach = function(client, bufnr)
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = bufnr,
+						callback = function()
+							client:exec_cmd({
+								title = "Apply Oxlint automatic fixes",
+								command = "oxc.fixAll",
+								arguments = { { uri = vim.uri_from_bufnr(bufnr) } },
+							})
+						end,
+					})
+				end,
+			})
+			vim.lsp.enable("oxlint")
+		else
+			-- TypeScript 6
+			vim.lsp.config("ts_ls", {
+				init_options = {
+					preferences = {
+						importModuleSpecifier = "non-relative",
+						importModuleSpecifierPreference = "non-relative",
+					},
+				},
+			})
+			vim.lsp.enable("ts_ls")
+
+			-- ESLint
+			vim.lsp.enable("eslint")
+		end
 
 		-- MDX
 		vim.lsp.config("mdx_analyzer", {
@@ -23,11 +64,7 @@ return {
 		})
 		vim.lsp.enable("mdx_analyzer")
 
-		-- ESLint
-		vim.lsp.enable("eslint")
-
 		-- Tailwind V4
-		local hostname = vim.fn.hostname()
 		if hostname == "fw13-23-amd-7840u" then
 			vim.lsp.config("tailwindcss", {
 				root_dir = function(bufnr, on_dir)

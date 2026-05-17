@@ -39,6 +39,7 @@ return {
 					always_show = {
 						".bruno",
 						".gitignore",
+						".oxfmtrc.json",
 						".npmrc",
 						".storybook",
 					},
