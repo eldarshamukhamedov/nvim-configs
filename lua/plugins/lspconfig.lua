@@ -6,14 +6,15 @@ return {
 
 		if hostname == "fw13-23-amd-7840u" then
 			-- TypeScript 7
+			local preferences = {
+				importModuleSpecifier = "non-relative",
+				importModuleSpecifierPreference = "non-relative",
+				autoImportSpecifierExcludeRegexes = { "^#/exports$" },
+			}
 			vim.lsp.config("tsgo", {
-				init_options = {
-					preferences = {
-						-- These settings usually carry over as they are passed to the
-						-- underlying TypeScript server host
-						importModuleSpecifier = "non-relative",
-						importModuleSpecifierPreference = "non-relative",
-					},
+				settings = {
+					typescript = { preferences = preferences },
+					javascirpt = { preferences = preferences },
 				},
 			})
 			vim.lsp.enable("tsgo")
