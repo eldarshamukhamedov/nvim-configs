@@ -140,6 +140,9 @@ return {
 			virtual_text = true,
 			underline = true,
 			update_in_insert = false,
+			signs = {
+				severity_sort = true,
+			},
 			float = {
 				close_events = {
 					"CursorMoved",
