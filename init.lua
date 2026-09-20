@@ -45,6 +45,20 @@ vim.opt.listchars = {
 -- Override .editorconfig
 vim.g.editorconfig = false
 
+-- Remap j/k to gj/gk, except when prepended with a number (e.g. '15j')
+vim.keymap.set({ "n", "v" }, "j", "v:count ? 'j' : 'gj'", { expr = true, silent = true })
+vim.keymap.set({ "n", "v" }, "k", "v:count ? 'k' : 'gk'", { expr = true, silent = true })
+-- Remap 0/$ to g0/g$, except when nowrap
+local function handle_wrap_nowrap_command(command)
+	return not vim.wo.wrap and command or "g" .. command
+end
+vim.keymap.set({ "n", "v" }, "0", function()
+	return handle_wrap_nowrap_command("0")
+end, { expr = true, silent = true })
+vim.keymap.set({ "n", "v" }, "$", function()
+	return handle_wrap_nowrap_command("$")
+end, { expr = true, silent = true })
+
 -- Clipboard interaction ('n' for normal mode, 'x' for visual mode)
 vim.keymap.set({ "n", "x" }, "gy", '"+y', { desc = "Copy to clipboard" })
 vim.keymap.set({ "n", "x" }, "gp", '"+p', { desc = "Paste from clipboard" })
