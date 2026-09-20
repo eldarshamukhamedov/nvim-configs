@@ -16,15 +16,16 @@ vim.o.backupcopy = "yes"
 -- Popup (e.g. autocomplete) max height
 vim.o.pumheight = 30
 
--- Enable wrap for markdown files
-local enable_wrap_options = {
-	pattern = { "*.md" },
+-- Markdown options: drop the space listchar (dots show through render-markdown
+-- padding), clear colorcolumn over rendered backgrounds. Global wrap stays off;
+-- line lengths are handled by the linter
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "mdx" },
 	callback = function()
-		vim.o.wrap = true
+		vim.opt_local.listchars = { tab = "| " }
+		vim.opt_local.colorcolumn = ""
 	end,
-}
-vim.api.nvim_create_autocmd("BufNewFile", enable_wrap_options)
-vim.api.nvim_create_autocmd("BufRead", enable_wrap_options)
+})
 
 -- Global leader key
 vim.api.nvim_set_keymap("", "<space>", "<nop>", { silent = true, noremap = true })

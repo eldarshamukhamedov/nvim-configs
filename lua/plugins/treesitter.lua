@@ -21,6 +21,7 @@ return {
 			"typescript",
 			"kotlin",
 			"java",
+			"yaml",
 		}
 		require("nvim-treesitter").setup({})
 		require("nvim-treesitter").install(parsers)
