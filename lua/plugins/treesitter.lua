@@ -39,9 +39,15 @@ return {
 				"kotlin",
 				"java",
 			},
-			callback = function()
-				-- Single quotes around 'nvim-treesitter' are required
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			callback = function(args)
+				if args.match == "kotlin" then
+					-- No kotlin indents.scm exists upstream; the treesitter
+					-- indentexpr falls back to autoindent, so use cindent
+					vim.bo.cindent = true
+				else
+					-- Single quotes around 'nvim-treesitter' are required
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
 				vim.treesitter.start()
 			end,
 		})
