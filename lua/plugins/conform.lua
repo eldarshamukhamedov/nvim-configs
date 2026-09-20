@@ -9,6 +9,12 @@ return {
 			timeout_ms = 3000,
 			lsp_format = "never",
 		}
+		local kotlin_formatter = {
+			"ktlint",
+			timeout_ms = 3000,
+			lsp_format = "never",
+		}
+
 		local on_save_timeout = 2000
 		if hostname == "fw13-23-amd-7840u" then
 			webdev_formatter = {
@@ -16,7 +22,7 @@ return {
 				timeout_ms = 500,
 				lsp_format = "never",
 			}
-			on_save_timeout = 500
+			-- on_save_timeout = 500
 		end
 
 		conform.setup({
@@ -27,6 +33,7 @@ return {
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
+				kotlin = kotlin_formatter,
 				css = webdev_formatter,
 				scss = webdev_formatter,
 				html = webdev_formatter,

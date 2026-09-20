@@ -39,6 +39,14 @@ return {
 				end,
 			})
 			vim.lsp.enable("oxlint")
+
+			-- Kotlin
+			vim.lsp.config("kotlin_ls", {
+				cmd = { "kotlin-language-server" },
+				filetypes = { "kotlin" },
+				root_markers = { "settings.gradle", "settings.gradle.kts", "build.gradle", "build.gradle.kts", ".git" },
+			})
+			vim.lsp.enable("kotlin_ls")
 		else
 			-- TypeScript 6
 			vim.lsp.config("ts_ls", {

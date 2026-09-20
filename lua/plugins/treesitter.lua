@@ -1,30 +1,49 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	version = false,
+	dependencies = { "neovim-treesitter/treesitter-parser-registry" },
+	branch = "main",
+	lazy = false,
+	build = ":TSUpdate",
 	config = function()
 		-- Filetypes
 		vim.filetype.add({ extension = { mdx = "mdx" } })
 		vim.treesitter.language.register("markdown", "mdx")
 
-		require("nvim-treesitter.configs").setup({
-			-- Ensure the following parsers are installed
-			ensure_installed = {
+		local parsers = {
+			"css",
+			"html",
+			"javascript",
+			"jsx",
+			"lua",
+			"markdown",
+			"markdown_inline",
+			"tsx",
+			"typescript",
+			"kotlin",
+			"java",
+		}
+		require("nvim-treesitter").setup({})
+		require("nvim-treesitter").install(parsers)
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = {
 				"css",
 				"html",
 				"javascript",
+				"javascriptreact",
 				"lua",
 				"markdown",
 				"markdown_inline",
-				"tsx",
 				"typescript",
+				"typescriptreact",
+				"kotlin",
+				"java",
 			},
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = false,
-			},
-			indent = {
-				enable = true,
-			},
+			callback = function()
+				-- Single quotes around 'nvim-treesitter' are required
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				vim.treesitter.start()
+			end,
 		})
 	end,
 }
