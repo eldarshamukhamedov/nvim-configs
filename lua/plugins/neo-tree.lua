@@ -87,29 +87,14 @@ config = function()
 		},
 	})
 	vim.keymap.set("n", "<leader>e", function()
-		local cmd = require("neo-tree.command")
-		-- Pressing inside an open tree: toggle that tree. The explicit
-		-- position is what makes neo-tree redirect current-position
-		-- requests to the tree under the cursor; without it the request
-		-- falls back to the config default (left)
-		if vim.bo.filetype == "neo-tree" then
-			cmd.execute({ position = vim.b.neo_tree_position, toggle = true })
-			return
-		end
-		local position = get_position()
-		-- Tree open in the other position: switch instead of stacking two trees
 		for _, w in ipairs(vim.api.nvim_list_wins()) do
 			local buf = vim.api.nvim_win_get_buf(w)
 			if vim.bo[buf].filetype == "neo-tree" then
-				if vim.b[buf].neo_tree_position ~= position then
-					cmd.execute({ action = "close" })
-					cmd.execute({ position = position })
-					return
-				end
-				break
+				vim.api.nvim_set_current_win(w)
+				return
 			end
 		end
-		cmd.execute({ position = position, toggle = true })
+		require("neo-tree.command").execute({ position = get_position() })
 	end, { desc = "Open Neotree" })
 end,
 }
