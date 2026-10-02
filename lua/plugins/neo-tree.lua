@@ -25,12 +25,12 @@ return {
 	},
 lazy = false,
 config = function()
-	-- Narrow terminals: render the tree in the current window instead of a
+	-- Narrow terminals: render the tree in a floating window instead of a
 	-- 30-col sidebar. Measured per keymap call so it follows live resizing;
 	-- setup() snapshots it once for the `nvim .` netrw hijack, which reads
 	-- the static config at startup
 	local get_position = function()
-		return vim.o.columns < 100 and "current" or "left"
+		return vim.o.columns < 100 and "float" or "left"
 	end
 
 	require("neo-tree").setup({
