@@ -37,7 +37,9 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch" },
+				lualine_b = {
+					"branch",
+				},
 				lualine_c = {
 					"location",
 					"diff",
@@ -63,7 +65,19 @@ return {
 					},
 				},
 				lualine_y = {},
-				lualine_z = {},
+				lualine_z = {
+					{
+						"hostname",
+						fmt = function()
+							local hostname = vim.fn.hostname()
+							if hostname == "fw13-23-amd-7840u" then
+								return "🕹️fw13-23"
+							else
+								return "🦁beast-26"
+							end
+						end,
+					},
+				},
 			},
 			inactive_sections = {
 				lualine_a = {},
