@@ -72,6 +72,8 @@ return {
 							local hostname = vim.fn.hostname()
 							if hostname == "fw13-23-amd-7840u" then
 								return "🕹️fw13-23"
+							elseif hostname == "Eldar's-MacBook-Pro" then
+								return "🏦nova-mac"
 							else
 								return "🦁beast-26"
 							end

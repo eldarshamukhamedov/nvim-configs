@@ -54,6 +54,14 @@ config = function()
 				},
 				always_show_by_pattern = {
 					".env*",
+					".scratch*",
+					".git*",
+					".claude*",
+					-- neo-tree anchors these patterns to the full string (^...$), so a
+					-- leading/trailing "*" is required to match nested paths at any depth
+					"*/.scratch/*",
+					"*/.git/*",
+					"*/.claude/*",
 				},
 			},
 		},
